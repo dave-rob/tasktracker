@@ -27,3 +27,30 @@ body {
 .task > * + * {
   margin-left: 4px;
 }
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+    
+  }
+  header{
+    background-color: #ffffff;
+  }
+
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: #ffffff;
+    background-color: #213547;
+  }
+
+  header{
+    background-color: #213547;
+  }
+  /* body{
+    background-color: #213547;
+  } */
+
+}
