@@ -1,9 +1,31 @@
-
+import { useState, useEffect } from "react";
+import axios from "axios";
 export default function Login(props) {
-    function login(event){
-        props.login(true)
-    }
 
+    const [userEmail, setUserEmail] = useState("");
+    const [userPassword, setUserPassword] = useState("");
+
+  const recordEmail = (event) => {
+    setUserEmail(event.target.value);
+  }
+  const recordPassword= (event) => {
+    setUserPassword(event.target.value);
+  }
+
+    function onLogin(event){
+        console.log(userEmail)
+        event.preventDefault()
+        axios.post("/api/login", {
+                email: userEmail,
+                password: userPassword
+            })
+              .then((tasks) => {
+                props.login(true)
+              })
+              .catch((res) => console.log(res));
+        // props.login(true)
+    }
+            
     return (
       <>
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -29,6 +51,7 @@ export default function Login(props) {
                     id="email"
                     name="email"
                     type="email"
+                    onChange={recordEmail}
                     autoComplete="email"
                     required
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-yellow-400 sm:text-sm sm:leading-6"
@@ -52,7 +75,7 @@ export default function Login(props) {
                     id="password"
                     name="password"
                     type="password"
-                    autoComplete="current-password"
+                    onChange={recordPassword}
                     required
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-yellow-600 sm:text-sm sm:leading-6"
                   />
@@ -61,7 +84,7 @@ export default function Login(props) {
   
               <div>
                 <button
-                  onClick={login}
+                  onClick={onLogin}
                   className="flex w-full justify-center rounded-md bg-yellow-400 px-3 py-1.5 text-sm font-semibold leading-6 text-gray-800 shadow-sm hover:bg-yellow-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-600"
                 >
                   Sign in

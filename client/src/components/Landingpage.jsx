@@ -1,6 +1,13 @@
 import Header from "./Header";
-
+import { useState } from "react";
+import Login from "./Login";
 export default function LandingPage(props){
+  const [logIn, setLogIn] = useState(false);
+
+  function userLogin(response){ 
+    setLogIn(true);
+  }
+
     const features = [
         { name: 'Origin', description: 'Designed by Good Goods, Inc.' },
         { name: 'Material', description: 'Solid walnut base with rare earth magnets and powder coated steel card cover' },
@@ -13,7 +20,8 @@ export default function LandingPage(props){
       
     return (
         <>
-            <Header login={props.login}/>
+            {logIn ? <Login login={props.userLogin}/> : <>
+            <Header login={userLogin}/>
             {props.width >=768?(<section className="bg-[url('/images/bigherobg.png')] bg-cover">
     <div className="grid max-w-screen-xl px-4 py-16 mx-auto lg:gap-8 xl:gap-0 lg:grid-cols-12 sm:grid-cols-12" >
         <div className="mr-auto place-self-center lg:col-span-7 sm:col-span-8">
@@ -43,51 +51,20 @@ export default function LandingPage(props){
         </div>
         </div>
 </section>) }
-        {/* {props.width >=1024 ? (
-            <>
-            <div className="lg:mt-0 lg:col-span-4 lg:flex sm:col-span-2">
-            <img  className='rotate-45' src="/images/emblem.png" alt="mockup" />
-        </div>      
-        <img  className='rotate-45 relative lg:right-0 lg:top-4' src="/images/emblem.png" alt="mockup" />          
-        <img  className='rotate-45 relative right-0 bottom-4 ' src="/images/emblem.png" alt="mockup" />      
-        <img  className='rotate-45 relative left-96 -top-52' src="/images/emblem.png" alt="mockup" />         
-        <img  className='rotate-45 relative left-10 -top-20' src="/images/emblem.png" alt="mockup" />   
-        <img  className='rotate-45 relative left-72 -top-36' src="/images/emblem.png" alt="mockup" />         
-        <img  className='rotate-45 relative left-16 bottom-16' src="/images/emblem.png" alt="mockup" />           
-        <img  className='rotate-45 relative left-52 bottom-24' src="/images/emblem.png" alt="mockup" />          
-        <img  className='rotate-45 relative right-0 bottom-96' src="/images/emblem.png" alt="mockup" />     
-        <img  className='rotate-45 relative left-96 -top-36' src="/images/emblem.png" alt="mockup" />          
-        <img  className='rotate-45 relative left-96 -top-52' src="/images/emblem.png" alt="mockup" /> 
-        </>
-        ) : (<><div className="lg:mt-0 lg:col-span-4 lg:flex sm:col-span-2">
-            <img  className='rotate-45' src="/images/emblem.png" alt="mockup" />
-        </div> 
-        <img  className='rotate-45 relative lg:right-0 lg:top-4 ' src="/images/emblem.png" alt="mockup" />          
-        <img  className='rotate-45 relative lg:bottom-4 md:top-10' src="/images/emblem.png" alt="mockup" />      
-        <img  className='rotate-45 relative lg:left-96 lg:-top-52 md:bottom-4' src="/images/emblem.png" alt="mockup" />         
-        <img  className='rotate-45 relative left-10 md:bottom-0' src="/images/emblem.png" alt="mockup" />   
-        <img  className='rotate-45 relative left-72 md:-top-4' src="/images/emblem.png" alt="mockup" />         
-        <img  className='rotate-45 relative md:left-24 md: bottom-16' src="/images/emblem.png" alt="mockup" />           
-        <img  className='rotate-45 relative left-52 bottom-24' src="/images/emblem.png" alt="mockup" />          
-        <img  className='rotate-45 relative right-0 bottom-96' src="/images/emblem.png" alt="mockup" />     
-        <img  className='rotate-45 relative left-96 -top-36' src="/images/emblem.png" alt="mockup" />          
-        <img  className='rotate-45 relative left-96 -top-52' src="/images/emblem.png" alt="mockup" /></> )  } */}
         
         
                
- 
-
     
- <section class="bg-white dark:bg-gray-900 ">
-    <div class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
-        <img class="w-full dark:hidden" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup.svg" alt="dashboard image" />
-        <img class="w-full hidden dark:block" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup-dark.svg" alt="dashboard image" />
-        <div class="mt-4 md:mt-0">
-            <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Let's create more tools and ideas that brings us together.</h2>
-            <p class="mb-6 font-light text-gray-500 md:text-lg dark:text-gray-400">Flowbite helps you connect with friends and communities of people who share your interests. Connecting with your friends and family as well as discovering new ones is easy with features like Groups.</p>
-            <a href="#" class="inline-flex items-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:ring-primary-900">
+ <section className="bg-white dark:bg-gray-900 ">
+    <div className="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
+        <img className="w-full dark:hidden" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup.svg" alt="dashboard image" />
+        <img className="w-full hidden dark:block" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup-dark.svg" alt="dashboard image" />
+        <div className="mt-4 md:mt-0">
+            <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Let's create more tools and ideas that brings us together.</h2>
+            <p className="mb-6 font-light text-gray-500 md:text-lg dark:text-gray-400">Flowbite helps you connect with friends and communities of people who share your interests. Connecting with your friends and family as well as discovering new ones is easy with features like Groups.</p>
+            <a href="#" className="inline-flex items-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:ring-primary-900">
                 Get started
-                <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                <svg className="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
             </a>
         </div>
     </div>
@@ -134,7 +111,7 @@ export default function LandingPage(props){
         </div>
       </div>
     </div>
-   
+   </>}
         </>
     )
 }

@@ -21,12 +21,28 @@ const app = express();
 
 app.use(express.json());
 
-app.get("/api/tasks", (req, res) => {
-  client.query("SELECT * FROM tasks").then((result) => {
+app.get("/api/users", (req, res) => {
+  client.query("SELECT * FROM users").then((result) => {
     res.send(result.rows);
   });
 });
 
+app.post('/api/login', async (req, res) => {
+  try{
+      const {email, password} = req.body; 
+      console.log(email, password);
+      const {rows} = await client.query("SELECT id FROM users WHERE email = $1 and password = crypt($2, password);", [email, password])
+  if (rows.length ===0){
+      throw new Error;
+  }
+
+  res.send(rows[0]);
+  } catch(err){
+      console.log("bad login")
+      console.log(err);
+      res.status(401).send("Incorrect Username and Password!")
+  }
+})
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
