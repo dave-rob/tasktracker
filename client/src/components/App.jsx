@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-
+import Header from './Header'
+import Login from './Login'
 const App = () => {
   const [tasks, setTasks] = useState([]);
-
+  const [logIn, setLogIn] = useState(false);
   useEffect(() => {
     fetch("/api/tasks")
       .then((res) => res.json())
@@ -11,15 +12,24 @@ const App = () => {
       });
   }, []);
 
+  function userLogin(response){
+    setLogIn(true);
+  }
   return (
     <main>
-      {tasks.map((task) => (
+    {logIn ? <Header /> :<Login login={userLogin}/>  }
+    {/* <p className="text-6xl font-bold underline">
+      Hello world!
+    </p> */}
+      {/* {tasks.map((task) => (
         <span className="task" key={task.id}>
           {task.description}
         </span>
-      ))}
+      ))} */}
+      
     </main>
   );
+  
 };
 
 export default App;

@@ -7,7 +7,12 @@ dotenv.config({ path: "../.env" });
 const { PORT, DATABASE_URL } = process.env;
 
 const client = new pg.Client({
-  connectionString: DATABASE_URL,
+  // connectionString: DATABASE_URL,
+  host: "localhost",
+  user: "postgres",
+  password:"123456",
+  database: "tasktracker",
+  port: 5432
 });
 
 await client.connect();
