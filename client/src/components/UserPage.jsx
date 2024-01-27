@@ -22,6 +22,7 @@ export default function UserPage(props){
       }, []);
 
     function selectWorkspace(response){
+        setCurrentWorkspace('');
         setCurrentWorkspace(response);
         // setAllWorkspaces((allWorkspaces) => ({...allWorkspaces, [response] : [workspaces[workspaces].name]}))
     }
@@ -29,6 +30,6 @@ export default function UserPage(props){
     return (
     <>
     <Header workspaces={workspaces} authenticated = {props.authenticated} selectWorkspace={selectWorkspace} /> 
-    <Workspace currentWorkspace={currentWorkspace} />
+    {currentWorkspace? <Workspace currentWorkspace={currentWorkspace} /> : ''}
     </>)
 }

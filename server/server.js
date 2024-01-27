@@ -32,6 +32,16 @@ app.get("/api/workspaces/:user_id", (req, res) => {
   client.query("SELECT * FROM workspaces where owner_id = $1;", [user_id]).then(results => res.send(results.rows))
 })
 
+app.get("/api/lists/:workspace_id", (req, res) => {
+  const {workspace_id} = req.params;
+  client.query("SELECT * FROM lists where workspace_id = $1;", [workspace_id]).then(results => res.send(results.rows))
+})
+
+app.get("/api/tasks/:list_id", (req, res) => {
+  const {list_id} = req.params;
+  client.query("SELECT * FROM tasks where list_id = $1;", [list_id]).then(results => res.send(results.rows))
+})
+
 app.post('/api/login', async (req, res) => {
   try{
       const {email, password} = req.body; 
