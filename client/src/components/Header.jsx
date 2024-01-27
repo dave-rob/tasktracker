@@ -65,23 +65,24 @@ export default function Header(props) {
             >
               <Popover.Panel className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5 dark:bg-gray-500">
                 <div className="p-4">
-                  {products.map((item) => (
+                  {props.authenticated ? <>{props.workspaces.map((workspace) => (
                     <div
-                      key={item.name}
+                      key={workspace.id}
                       className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-400"
+                      onClick={() => props.selectWorkspace(workspace)}
                     >
                       <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
                         <ViewColumnsIcon className="h-6 w-6 text-gray-600 group-hover:text-yellow-600" aria-hidden="true" />
                       </div>
                       <div className="flex-auto">
-                        <a href={item.href} className="block font-semibold text-gray-900 ">
-                          {item.name}
+                        
+                          {workspace.name}
                           <span className="absolute inset-0" />
-                        </a>
-                        <p className="mt-1 text-gray-600 dark:text-gray-200">{item.description}</p>
+                       
+                        <p className="mt-1 text-gray-600 dark:text-gray-200">{workspace.owner_id}</p>
                       </div>
                     </div>
-                  ))}
+                  ))}</> : ''}
                   <div
                       className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-400"
                     >
@@ -97,20 +98,6 @@ export default function Header(props) {
                       </div>
                     </div>
                 </div>
-
-                
-                {/* <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
-                  {callsToAction.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100"
-                    >
-                      <item.icon className="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
-                      {item.name}
-                    </a>
-                  ))}
-                </div> */}
               </Popover.Panel>
             </Transition>
           </Popover>
@@ -166,16 +153,18 @@ export default function Header(props) {
                         />
                       </Disclosure.Button>
                       <Disclosure.Panel className="mt-2 space-y-2">
-                        {[...products].map((item) => (
+                        {props.authenticated ? props.workspaces.map((item) => (
                           <Disclosure.Button
-                            key={item.name}
-                            as="a"
-                            href={item.href}
-                            className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-gray-700"
+                            key={item.id}
+                            
+                            className="block rounded-lg py-2 pl-8 w-fulltext-sm font-semibold leading-7 text-left text-gray-900 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-gray-700"
                           >
                             {item.name}
-                          </Disclosure.Button>
-                        ))}
+                          </Disclosure.Button >
+                        )) : ''}
+                        <Disclosure.Button className="block rounded-lg py-2 pl-8 w-full text-sm font-semibold leading-7 text-left text-gray-900 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-gray-700">
+                          Create New Workspace
+                        </Disclosure.Button>
                       </Disclosure.Panel>
                     </>
                   )}

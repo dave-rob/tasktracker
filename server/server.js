@@ -27,10 +27,14 @@ app.get("/api/users", (req, res) => {
   });
 });
 
+app.get("/api/workspaces/:user_id", (req, res) => {
+  const {user_id} = req.params;
+  client.query("SELECT * FROM workspaces where owner_id = $1;", [user_id]).then(results => res.send(results.rows))
+})
+
 app.post('/api/login', async (req, res) => {
   try{
       const {email, password} = req.body; 
-      console.log(email, password);
       const {rows} = await client.query("SELECT id FROM users WHERE email = $1 and password = crypt($2, password);", [email, password])
   if (rows.length ===0){
       throw new Error;

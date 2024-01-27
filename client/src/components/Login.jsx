@@ -13,14 +13,13 @@ export default function Login(props) {
   }
 
     function onLogin(event){
-        console.log(userEmail)
         event.preventDefault()
         axios.post("/api/login", {
                 email: userEmail,
                 password: userPassword
             })
-              .then((tasks) => {
-                props.login(true)
+              .then((res) => {
+                props.login(res.data.id)
               })
               .catch((res) => console.log(res));
         // props.login(true)
@@ -28,20 +27,25 @@ export default function Login(props) {
             
     return (
       <>
-        <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+        <div className=" px-6 py-12 lg:px-8">
+        <div className="dark:border-gray-500 w-fit px-20 py-10 m-auto rounded-xl shadow-lg border-2 ">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+          <div className="flex justify-center">
             <img
-              className="mx-auto h-10 w-auto"
+              className=" h-10 w-auto float-left"
               src="./images/logo.png"
               alt="TaskHive"
             />
+            <h1 className=" text-3xl ">TaskHive</h1>
+          </div>
+            
             <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900 dark:text-gray-100">
               Sign in to your account
             </h2>
           </div>
   
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-            <form className="space-y-6" action="#" method="POST">
+            <form className="space-y-6" method="POST">
               <div>
                 <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-100">
                   Email address
@@ -98,6 +102,7 @@ export default function Login(props) {
                 Register today
               </a>
             </p>
+          </div>
           </div>
         </div>
       </>
