@@ -57,6 +57,47 @@ app.post('/api/login', async (req, res) => {
       res.status(401).send("Incorrect Username and Password!")
   }
 })
+
+app.post('/api/workspaces/:user_id', async (req, res) => {
+  try{
+    const {user_id} = req.params;
+      const {name} = req.body; 
+      const {rows} = await client.query("INSERT INTO workspaces(name, owner_id) VALUES ($1, $2) returning *;", [name, user_id])
+      res.status(200).send(rows);
+  
+  } catch(err){
+      console.log(err);
+      res.status(500).send("Internal Server Error")
+  }
+})
+
+app.post('/api/lists/:workspace_id', async (req, res) => {
+  try{
+    const {workspace_id} = req.params;
+      const {description} = req.body; 
+      const {rows} = await client.query("INSERT INTO lists(description, workspace_id) VALUES ($1, $2) returning *;", [description, workspace_id])
+      res.status(200).send(rows);
+  
+  } catch(err){
+      console.log(err);
+      res.status(500).send("Internal Server Error")
+  }
+})
+
+app.post('/api/tasks/:list_id', async (req, res) => {
+  try{
+    const {list_id} = req.params;
+      const {description} = req.body; 
+      const {rows} = await client.query("INSERT INTO tasks(description, list_id) VALUES ($1, $2) returning *;", [description, list_id])
+      res.status(200).send(rows);
+  
+  } catch(err){
+      console.log(err);
+      res.status(500).send("Internal Server Error")
+  }
+})
+
+
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });

@@ -12,11 +12,11 @@ import {
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 
-const products = [
-  { name: 'workspace1', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
-  { name: 'workspace2', description: 'Speak directly to your customers', href: '#', icon: CursorArrowRaysIcon },
-  { name: 'workspace3', description: 'Your customers’ data will be safe and secure', href: '#', icon: FingerPrintIcon },
-]
+// const products = [
+//   { name: 'workspace1', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
+//   { name: 'workspace2', description: 'Speak directly to your customers', href: '#', icon: CursorArrowRaysIcon },
+//   { name: 'workspace3', description: 'Your customers’ data will be safe and secure', href: '#', icon: FingerPrintIcon },
+// ]
 // const callsToAction = [
 //   { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
 //   { name: 'Contact sales', href: '#', icon: PhoneIcon },
@@ -25,6 +25,7 @@ const products = [
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
+
 
 export default function Header(props) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -66,41 +67,44 @@ export default function Header(props) {
               <Popover.Panel className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5 dark:bg-gray-500">
                 <div className="p-4">
                   {props.authenticated ? <>{props.workspaces.map((workspace) => (
-                    <div
+                    <button
                       key={workspace.id}
-                      className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-400"
+                      className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-400 w-full"
                       onClick={() => props.selectWorkspace(workspace)}
                     >
                       <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
                         <ViewColumnsIcon className="h-6 w-6 text-gray-600 group-hover:text-yellow-600" aria-hidden="true" />
                       </div>
-                      <div className="flex-auto">
+                      <div className="flex-auto block font-semibold text-gray-900 text-left">
                         
                           {workspace.name}
                           <span className="absolute inset-0" />
                        
                         <p className="mt-1 text-gray-600 dark:text-gray-200">{workspace.owner_id}</p>
                       </div>
-                    </div>
+                    </button>
                   ))}</> : ''}
-                  <div
-                      className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-400"
+                  <button
+                      className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-400 w-full"
+                      onClick={()=> props.modal(true)}
+                      type="button"
                     >
                       <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
                         <SquaresPlusIcon className="h-6 w-6 text-gray-600 group-hover:text-yellow-600" aria-hidden="true" />
                       </div>
-                      <div className="flex-auto">
-                        <a href='' className="block font-semibold text-gray-900">
+                      <div className="flex-auto block font-semibold text-gray-900 text-left">
+                        
                           Create New Workspace
                           <span className="absolute inset-0" />
-                        </a>
+                        
                         {/* <p className="mt-1 text-gray-600">{item.description}</p> */}
                       </div>
-                    </div>
+                    </button>
                 </div>
               </Popover.Panel>
             </Transition>
           </Popover>
+      
 
           <a href="#" className="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-100">
             Features
@@ -157,12 +161,13 @@ export default function Header(props) {
                           <Disclosure.Button
                             key={item.id}
                             
-                            className="block rounded-lg py-2 pl-8 w-fulltext-sm font-semibold leading-7 text-left text-gray-900 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-gray-700"
+                            className="block rounded-lg py-2 pl-8 w-full text-sm font-semibold leading-7 text-left text-gray-900 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-gray-700"
                           >
                             {item.name}
                           </Disclosure.Button >
                         )) : ''}
-                        <Disclosure.Button className="block rounded-lg py-2 pl-8 w-full text-sm font-semibold leading-7 text-left text-gray-900 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-gray-700">
+                        <Disclosure.Button className="block rounded-lg py-2 pl-8 w-full text-sm font-semibold leading-7 text-left text-gray-900 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-gray-700"
+                        onClick={()=> props.modal(true)}>
                           Create New Workspace
                         </Disclosure.Button>
                       </Disclosure.Panel>

@@ -1,7 +1,6 @@
 import { PencilIcon } from "@heroicons/react/24/outline";
 
 const Task = (props) => {
-  console.log(props.tasks);
 
   return (
     <>
