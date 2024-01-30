@@ -97,6 +97,19 @@ app.post('/api/tasks/:list_id', async (req, res) => {
   }
 })
 
+app.patch('/api/tasks/:task_id', async (req, res) => {
+  try{
+    const {task_id} = req.params;
+    const {list_id} = req.body;
+    const {rows} = await client.query("UPDATE tasks SET list_id = $1 WHERE id = $2 returning *;", [list_id, task_id])
+    res.send(rows);
+  }
+  catch(err){
+    console.error(err)
+    res.status(500).send("Internal Server Error")
+  }
+})
+
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);

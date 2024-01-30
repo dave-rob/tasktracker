@@ -3,11 +3,12 @@ import { useEffect, useState } from "react";
 import { PlusCircleIcon, ArrowPathRoundedSquareIcon } from "@heroicons/react/24/outline";
 import TaskModal from "./TaskModal";
 import { useDrop } from 'react-dnd';
+import axios from "axios";
 
 const DropZone = ({ onDrop, tableId }) => {
   const [{ isOver }, drop] = useDrop({
     accept: 'TASK',
-    drop: (item) => onDrop(item, tableId),
+    drop: (task) => onDrop(task, tableId),
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
     }),
@@ -39,7 +40,7 @@ const Table = (props) => {
         })
         .catch((error) => console.error(`Error fetching tasks: ${error}`));
     });
-  }, [props.tables]);
+  }, [props.tables]); 
 
   function createNewTask(response){
     setShowModal(response)
@@ -58,9 +59,29 @@ const Table = (props) => {
     setShowModal(true)
   }
 
-  const handleDrop = (item, targetTableId) => {
-    console.log(`Dropped task ${item.id} into table ${targetTableId}`);
+  console.log(tableTasks)
+
+  const handleDrop = (task, targetTableId) => {
+    console.log(task)
+    console.log(`Dropped task ${task.id} into table ${targetTableId} from ${task.list_id}`);
     // You can update the task list here
+    axios.patch(`/api/tasks/${task.id}`, {
+      list_id: targetTableId,
+    }).then(response  => {
+      console.log(response.data[0].id)
+      for( let x in tableTasks){
+        for(let y in tableTasks[x]){
+        if(tableTasks[x][y].id === response.data[0].id && tableTasks[x][y].list_id !== response.data[0].list_id){
+          console.log(`id ${response.data[0].id} old table is ${tableTasks[x][y].list_id }`)
+          console.log(tableTasks[x][y])
+          tableTasks[x].splice(y,1)
+        }
+        }
+        
+      }
+      addNewTask(response.data[0])
+    })
+    
   };
   
 
@@ -72,7 +93,7 @@ const Table = (props) => {
         <div key={table.id} className="bg-slate-800 col-span-2 mx-2 h-fit mt-5 pb-2 rounded-3xl">
           <h3 className="text-xl text-center py-2">{table.description}</h3>
           {/* Pass the tasks for the specific table as a prop to the Task component */}
-          <Task key={table.id} tableId={table.list_id} tasks={tableTasks[table.id] || []} />
+          <Task key={table.id} tableId={table.id} tasks={tableTasks[table.id] || []} />
         <DropZone onDrop={handleDrop} tableId={table.id} /><PlusCircleIcon id = {table.id} onClick={selectTable} className="float-right w-10 pt-2 pr-2 cursor-pointer hover:text-yellow-400"/>
         </div>
         
