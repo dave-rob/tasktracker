@@ -13,7 +13,7 @@ const client = new pg.Client({
 await client.connect();
 
 const app = express();
-
+app.use(express.static('../client/src'));
 app.use(express.json());
 
 app.get("/api/users", (req, res) => {
