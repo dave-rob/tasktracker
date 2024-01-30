@@ -45,7 +45,7 @@ export default function UserPage(props){
 
     return (
     <>
-    <Header workspaces={workspaces} modal ={createNewWorkspace} authenticated = {props.authenticated} selectWorkspace={selectWorkspace} /> 
+    <Header workspaces={workspaces} modal ={createNewWorkspace} authenticated = {props.authenticated} logOut={props.logOut} selectWorkspace={selectWorkspace} /> 
     {currentWorkspace? <Workspace currentWorkspace={currentWorkspace} /> : ''}
     
     {showModal ? <WorkspaceModal modal={createNewWorkspace} addWorkspace={addNewWorkspace} userId={props.userId} /> : <></>}</>)

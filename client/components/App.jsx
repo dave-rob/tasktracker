@@ -22,10 +22,17 @@ const App = () => {
     setUserId(response)
     setUserLoggedIn(true);
   }
+
+  function userLogout(response){
+    setUserId('');
+    setUserLoggedIn(false);
+  }
+
+  console.log(userLoggedIn)
   return (
     <main>
     <DndProvider backend={HTML5Backend}>
-    {userLoggedIn ? <UserPage authenticated={userLoggedIn} userId={userId} /> : <LandingPage userLogin={userLogin} width={width}/>}
+    {userLoggedIn ? <UserPage authenticated={userLoggedIn} userId={userId} logOut = {userLogout} /> : <LandingPage userLogin={userLogin} width={width}/>}
 
     </DndProvider>
     {/* {logIn ? <Header /> :<Login login={userLogin}/>  } */}

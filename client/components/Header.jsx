@@ -12,15 +12,6 @@ import {
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 
-// const products = [
-//   { name: 'workspace1', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
-//   { name: 'workspace2', description: 'Speak directly to your customers', href: '#', icon: CursorArrowRaysIcon },
-//   { name: 'workspace3', description: 'Your customers’ data will be safe and secure', href: '#', icon: FingerPrintIcon },
-// ]
-// const callsToAction = [
-//   { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
-//   { name: 'Contact sales', href: '#', icon: PhoneIcon },
-// ]
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -116,11 +107,16 @@ export default function Header(props) {
             Company
           </a>
         </Popover.Group>
+        {props.authenticated ? <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+          <a href="#" className="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-100" onClick={() => {props.logOut(false)}}>
+            Log out <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>: 
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <a href="#" className="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-100" onClick={() => {props.login(true)}}>
             Log in <span aria-hidden="true">&rarr;</span>
           </a>
-        </div>
+        </div>}
       </nav>
       <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
         <div className="fixed inset-0 z-10" />
@@ -193,7 +189,17 @@ export default function Header(props) {
                   Company
                 </a>
               </div>
-              <div className="">
+              {props.authenticated ? 
+              <div>
+                <a
+                  href="#"
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-gray-700"
+                  // onClick={}
+                >
+                  Log out
+                </a>
+              </div> : 
+              <div>
                 <a
                   href="#"
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-gray-700"
@@ -201,7 +207,7 @@ export default function Header(props) {
                 >
                   Log in
                 </a>
-              </div>
+              </div>}
             </div>
           </div>
         </Dialog.Panel>

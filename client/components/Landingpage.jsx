@@ -5,7 +5,7 @@ export default function LandingPage(props){
   const [logIn, setLogIn] = useState(false);
 
   function userLogin(response){ 
-    setLogIn(true);
+    setLogIn(response);
   }
 
     const features = [
