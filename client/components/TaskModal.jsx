@@ -8,12 +8,12 @@ export default function TaskModal(props){
         setNewTask(e.target.value)
     }
 
-    console.log("task modal : " + props.tableId)
+    //console.log("task modal : " + props.tableId)
 
     function createNewTask(){
         axios.post(`/api/tasks/${props.tableId}`, {description: newTask})
             .then(res => {
-                console.log(res.data)
+                //console.log(res.data)
                 props.addTask(res.data[0]);
                 props.modal(false);
             })

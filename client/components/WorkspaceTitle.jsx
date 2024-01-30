@@ -2,7 +2,7 @@
 import { PlusCircleIcon } from "@heroicons/react/24/outline";
 import { useEffect } from "react";
 export default function WorkspaceTitle(props){
-    console.log(props.workspace)
+   // console.log(props.workspace)
     return (
         <>
             <nav className="grid grid-cols-12 text-2xl pl-3 py-3 bg-gradient-to-r from-gray-800 to-yellow-500">

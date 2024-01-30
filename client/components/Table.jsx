@@ -47,7 +47,7 @@ const Table = (props) => {
   }
   
   function addNewTask(response){
-    console.log(response);
+    //console.log(response);
     setTableTasks((prevTables) => ({
         ...prevTables,
         [response.list_id]: [...prevTables[response.list_id], response]
@@ -59,21 +59,20 @@ const Table = (props) => {
     setShowModal(true)
   }
 
-  console.log(tableTasks)
+
 
   const handleDrop = (task, targetTableId) => {
-    console.log(task)
-    console.log(`Dropped task ${task.id} into table ${targetTableId} from ${task.list_id}`);
-    // You can update the task list here
+  
+    // console.log(`Dropped task ${task.id} into table ${targetTableId} from ${task.list_id}`);
     axios.patch(`/api/tasks/${task.id}`, {
       list_id: targetTableId,
     }).then(response  => {
-      console.log(response.data[0].id)
+     // console.log(response.data[0].id)
       for( let x in tableTasks){
         for(let y in tableTasks[x]){
         if(tableTasks[x][y].id === response.data[0].id && tableTasks[x][y].list_id !== response.data[0].list_id){
-          console.log(`id ${response.data[0].id} old table is ${tableTasks[x][y].list_id }`)
-          console.log(tableTasks[x][y])
+          //console.log(`id ${response.data[0].id} old table is ${tableTasks[x][y].list_id }`)
+          //console.log(tableTasks[x][y])
           tableTasks[x].splice(y,1)
         }
         }

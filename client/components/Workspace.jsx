@@ -3,7 +3,7 @@ import Table from "./Table"
 import { useEffect, useState } from "react"
 import ListModal from "./NewListModal";
 export default function Workspace(props){
-    console.log(props.currentWorkspace);
+    //console.log(props.currentWorkspace);
     
     const [tables, setTables] = useState([])
     const [showModal, setShowModal] = useState(false)
@@ -35,7 +35,7 @@ export default function Workspace(props){
           response
       ]));
   }
-  console.log(tables)
+  //console.log(tables)
     return (
         <>
             <WorkspaceTitle workspace={props.currentWorkspace} modal ={createNewList} />

@@ -17,7 +17,7 @@ export default function WorkspaceModal(props){
     function createNewWorkspace(){
         axios.post(`/api/workspaces/${props.userId}`, {name: newWorkspace})
             .then(res => {
-                console.log(res.data)
+                //console.log(res.data)
                 props.addWorkspace(res.data[0]);
                 props.modal(false);
             })

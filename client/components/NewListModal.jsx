@@ -8,12 +8,12 @@ export default function ListModal(props){
         setNewList(e.target.value)
     }
 
-    console.log("lsit modal: " + props.workspaceId)
+    //console.log("lsit modal: " + props.workspaceId)
 
     function createNewList(){
         axios.post(`/api/lists/${props.workspaceId}`, {description: newList})
             .then(res => {
-                console.log(res.data)
+               // console.log(res.data)
                 props.addList(res.data[0]);
                 props.modal(false);
             })
