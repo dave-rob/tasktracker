@@ -3,6 +3,8 @@ import Header from './Header'
 import Login from './Login'
 import LandingPage from "./Landingpage";
 import UserPage from "./UserPage";
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
 const App = () => {
   // const [tasks, setTasks] = useState([]);
   
@@ -22,7 +24,10 @@ const App = () => {
   }
   return (
     <main>
+    <DndProvider backend={HTML5Backend}>
     {userLoggedIn ? <UserPage authenticated={userLoggedIn} userId={userId} /> : <LandingPage userLogin={userLogin} width={width}/>}
+
+    </DndProvider>
     {/* {logIn ? <Header /> :<Login login={userLogin}/>  } */}
     {/* <p className="text-6xl font-bold underline">
       Hello world!

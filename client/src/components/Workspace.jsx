@@ -5,7 +5,7 @@ import ListModal from "./NewListModal";
 export default function Workspace(props){
     console.log(props.currentWorkspace);
     
-    const [tables, setTables] = useState('')
+    const [tables, setTables] = useState([])
     const [showModal, setShowModal] = useState(false)
 
     //console.log(props.currentWorkspace)
