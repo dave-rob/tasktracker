@@ -113,7 +113,7 @@ export default function LandingPage(props){
             className="rounded-lg bg-gray-100"
           />
           <img
-            src="assets/multipleworkspaces.png"
+            src="assets/multipleworkspaces.PNG"
             alt="Walnut card tray filled with cards and card angled in dedicated groove."
             className="rounded-lg bg-gray-100"
           />
