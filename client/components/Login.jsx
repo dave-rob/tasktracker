@@ -33,7 +33,7 @@ export default function Login(props) {
           <div className="flex justify-center">
             <img
               className=" h-10 w-auto float-left"
-              src="./images/logo.png"
+              src="./assets/logo.png"
               alt="TaskHive"
             />
             <h1 className=" text-3xl ">TaskHive</h1>

@@ -31,7 +31,7 @@ export default function LandingPage(props){
         {registerScreen ? <Register register={userRegisterScreen}/> : (<>
             {logIn ? <Login login={props.userLogin}/> : <>
             <Header login={userLogin} register = {userRegisterScreen} />
-            {props.width >=768?(<section className="bg-[url('/images/bigherobg.png')] bg-cover">
+            {props.width >=768?(<section className="bg-[url('/assets/bigherobg.png')] bg-cover">
     <div className="grid max-w-screen-xl px-4 py-16 mx-auto lg:gap-8 xl:gap-0 lg:grid-cols-12 sm:grid-cols-12" >
         <div className="mr-auto place-self-center lg:col-span-7 sm:col-span-8">
             <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-8xl dark:text-gray-800">TaskHive</h1>
@@ -45,7 +45,7 @@ export default function LandingPage(props){
             </a> 
         </div>
         </div>
-</section>) : (<section className="bg-[url('/images/herobg.png')] bg-cover">
+</section>) : (<section className="bg-[url('/assets/herobg.png')] bg-cover">
     <div className="grid max-w-screen-xl px-4 py-16 mx-auto lg:gap-8 xl:gap-0 lg:grid-cols-12 sm:grid-cols-12" >
         <div className="mr-auto place-self-center lg:col-span-7 sm:col-span-8">
             <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-8xl dark:text-gray-800">TaskHive</h1>
@@ -67,7 +67,7 @@ export default function LandingPage(props){
  <section className="bg-white dark:bg-gray-900 ">
     <div className="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
       
-        <img className="w-full block" src='images/websitedemo.png' alt="dashboard image" />
+        <img className="w-full block" src='assets/websitedemo.png' alt="dashboard image" />
         <div className="mt-4 md:mt-0">
             <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
             Let us help you stay on top of your tasks.
@@ -98,22 +98,22 @@ export default function LandingPage(props){
         </div>
         <div className="grid grid-cols-2 grid-rows-2 gap-4 sm:gap-6 lg:gap-8">
           <img
-            src='images/rightclick.png'
+            src='assets/rightclick.png'
             alt="Walnut card tray with white powder coated steel divider and 3 punchout holes."
             className="rounded-lg bg-gray-100"
           />
           <img
-            src="images/edit.png"
+            src="assets/edit.png"
             alt="Top down view of walnut card tray with embedded magnets and card groove."
             className="rounded-lg bg-gray-100"
           />
           <img
-            src="images/dragndrop.png"
+            src="assets/dragndrop.png"
             alt="Side of walnut card tray with card groove and recessed card area."
             className="rounded-lg bg-gray-100"
           />
           <img
-            src="images/multipleworkspaces.png"
+            src="assets/multipleworkspaces.png"
             alt="Walnut card tray filled with cards and card angled in dedicated groove."
             className="rounded-lg bg-gray-100"
           />
