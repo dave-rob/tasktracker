@@ -18,12 +18,12 @@ function rightClick(e){
     e.target.classList.remove("line-through")
   axios.patch(`/api/tasks/${task.id}`,{
         done: false,
-      }).then(response => console.log(response.data))
+      })
   } else{
   e.target.classList.add("line-through")
   axios.patch(`/api/tasks/${task.id}`,{
         done: true,
-      }).then(response => console.log(response.data))
+      })
     }
 }
 

@@ -15,21 +15,20 @@ export default function LandingPage(props){
       setRegisterScreen(response)
     }
 
-    console.log("register", registerScreen)
+    //console.log("register", registerScreen)
     const features = [
         { name: 'Add', description: 'Any plus sign will allow you to add a new workspace, table, or task' },
         { name: 'Double Click', description: 'Double click on a task and you can edit the task' },
         { name: 'Press Enter', description: 'When done with editing a task, click enter to save the new task' },
         { name: 'Right Click', description: 'Right clicking a task will mark the task as complete' },
         { name: 'Drag and Drop', description: 'You can easily move tasks between tables by dragging and dropping' },
-        // { name: 'Considerations', description: 'Made from natural materials. Grain and color vary with each item.' },
       ]
 
       
     return (
         <>
         {registerScreen ? <Register register={userRegisterScreen}/> : (<>
-            {logIn ? <Login login={props.userLogin}/> : <>
+            {logIn ? <Login login={props.userLogin} cancelLogin= {userLogin} register={userRegisterScreen}/> : <>
             <Header login={userLogin} register = {userRegisterScreen} />
             {props.width >=768?(<section className="bg-[url('/assets/bigherobg.png')] bg-cover">
     <div className="grid max-w-screen-xl px-4 py-16 mx-auto lg:gap-8 xl:gap-0 lg:grid-cols-12 sm:grid-cols-12" >

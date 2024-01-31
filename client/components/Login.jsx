@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { XCircleIcon } from "@heroicons/react/24/outline";
 export default function Login(props) {
 
     const [userEmail, setUserEmail] = useState("");
@@ -21,12 +22,13 @@ export default function Login(props) {
               .then((res) => {
                 props.login(res.data.id)
               })
-              .catch((res) => console.log(res));
+              .catch((res) => alert("incorrect username/password"));
         // props.login(true)
     }
             
     return (
       <>
+      <XCircleIcon  onClick = {()=>props.cancelLogin(false)} className="m-5 h-6 float-right dark:text-white text-black hover:text-yellow-400"/>
         <div className=" px-6 py-12 lg:px-8">
         <div className="dark:border-gray-500 w-fit px-20 py-10 m-auto rounded-xl shadow-lg border-2 ">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -98,7 +100,7 @@ export default function Login(props) {
   
             <p className="mt-10 text-center text-sm text-gray-500 dark:text-gray-100">
               Not a member?{' '}
-              <a href="#" className="font-semibold leading-6 text-yellow-400 hover:text-yellow-500">
+              <a onClick ={()=>props.register(true)}className="font-semibold leading-6 text-yellow-400 hover:text-yellow-500">
                 Register today
               </a>
             </p>

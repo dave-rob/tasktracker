@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { XCircleIcon } from "@heroicons/react/24/outline";
 export default function Login(props) {
 
     const [userEmail, setUserEmail] = useState("");
@@ -37,6 +38,7 @@ export default function Login(props) {
             
     return (
       <>
+      <XCircleIcon  onClick = {()=>props.register(false)} className="m-5 h-6 float-right dark:text-white text-black hover:text-yellow-400"/>
         <div className=" px-6 py-12 lg:px-8">
         <div className="dark:border-gray-500 w-fit px-20 py-10 m-auto rounded-xl shadow-lg border-2 ">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">

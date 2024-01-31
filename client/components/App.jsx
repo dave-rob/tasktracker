@@ -28,7 +28,7 @@ const App = () => {
     setUserLoggedIn(false);
   }
 
-  console.log(userLoggedIn)
+  //console.log(userLoggedIn)
   return (
     <main>
     <DndProvider backend={HTML5Backend}>
