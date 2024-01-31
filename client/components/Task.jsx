@@ -39,11 +39,11 @@ function rightClick(e){
 
   return (
     <>
-    {task.done ? <div ref={drag} className="line-through bg-slate-500 mx-1 px-2 py-2 my-1 border-slate-900 border" onDoubleClick={editButton} onKeyDown={editButton} onContextMenu={rightClick}>
+    {task.done ? <div ref={drag} className="line-through bg-gray-300 dark:bg-slate-500 mx-2 px-2 py-2 my-1 dark:border-slate-900 border" onDoubleClick={editButton} onKeyDown={editButton} onContextMenu={rightClick}>
       {task.description}
 
       {/* <ArrowDownTrayIcon className="float-right w-3 mx-1 py-1" onClick={editButton} /> */}
-    </div> :<div ref={drag} className=" bg-slate-500 mx-1 px-2 py-2 my-1 border-slate-900 border" onDoubleClick={editButton} onKeyDown={editButton} onContextMenu={rightClick}>
+    </div> :<div ref={drag} className=" bg-gray-300 dark:bg-slate-500 mx-2 px-2 py-2 my-1 dark:border-slate-900 border" onDoubleClick={editButton} onKeyDown={editButton} onContextMenu={rightClick}>
       {task.description}
 
       {/* <ArrowDownTrayIcon className="float-right w-3 mx-1 py-1" onClick={editButton} /> */}

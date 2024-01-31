@@ -15,8 +15,8 @@ const DropZone = ({ onDrop, tableId }) => {
   });
 
   return (
-    <div ref={drop} className =" flex justify-center m-2 bg-slate-700 text-center py-2" style={{  border: isOver ? '1px dotted white' : 'none' }}>
-      <ArrowPathRoundedSquareIcon className="h-5 "/>
+    <div ref={drop} className =" flex justify-center m-2 bg-gray-400 dark:bg-slate-700 text-center py-2" style={{  border: isOver ? '1px dotted white' : 'none' }}>
+      <ArrowPathRoundedSquareIcon className="h-5 hover:text-yellow-400"/>
     </div>
   );
 };
@@ -89,11 +89,12 @@ const Table = (props) => {
       {props.tables.map((table) => {
       
         return (
-        <div key={table.id} className="bg-slate-800 col-span-2 mx-2 h-fit mt-5 pb-2 rounded-3xl">
+        <div key={table.id} className="bg-white dark:bg-slate-800 col-span-2 mx-2 h-fit mt-5 pb-2 rounded-3xl">
           <h3 className="text-xl text-center py-2">{table.description}</h3>
           {/* Pass the tasks for the specific table as a prop to the Task component */}
           <Task key={table.id} tableId={table.id} tasks={tableTasks[table.id] || []} />
-        <DropZone onDrop={handleDrop} tableId={table.id} /><PlusCircleIcon id = {table.id} onClick={selectTable} className="float-right w-10 pt-2 pr-2 cursor-pointer hover:text-yellow-400"/>
+        <DropZone onDrop={handleDrop} tableId={table.id} />
+        <PlusCircleIcon id = {table.id} onClick={selectTable} className="float-right w-10 pt-2 pr-2 cursor-pointer hover:text-yellow-400"/>
         </div>
         
       )

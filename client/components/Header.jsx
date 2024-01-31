@@ -101,7 +101,7 @@ export default function Header(props) {
             Features
           </a>
           <a href="#" className="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-100">
-            Marketplace
+            About Us
           </a>
           <a href="#" className="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-100">
             Company
@@ -180,7 +180,7 @@ export default function Header(props) {
                   href="#"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-gray-700"
                 >
-                  Marketplace
+                  About Us
                 </a>
                 <a
                   href="#"

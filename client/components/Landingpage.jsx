@@ -17,12 +17,12 @@ export default function LandingPage(props){
 
     console.log("register", registerScreen)
     const features = [
-        { name: 'Origin', description: 'Designed by Good Goods, Inc.' },
-        { name: 'Material', description: 'Solid walnut base with rare earth magnets and powder coated steel card cover' },
-        { name: 'Dimensions', description: '6.25" x 3.55" x 1.15"' },
-        { name: 'Finish', description: 'Hand sanded and finished with natural oil' },
-        { name: 'Includes', description: 'Wood card tray and 3 refill packs' },
-        { name: 'Considerations', description: 'Made from natural materials. Grain and color vary with each item.' },
+        { name: 'Add', description: 'Any plus sign will allow you to add a new workspace, table, or task' },
+        { name: 'Double Click', description: 'Double click on a task and you can edit the task' },
+        { name: 'Press Enter', description: 'When done with editing a task, click enter to save the new task' },
+        { name: 'Right Click', description: 'Right clicking a task will mark the task as complete' },
+        { name: 'Drag and Drop', description: 'You can easily move tasks between tables by dragging and dropping' },
+        // { name: 'Considerations', description: 'Made from natural materials. Grain and color vary with each item.' },
       ]
 
       
@@ -66,25 +66,25 @@ export default function LandingPage(props){
     
  <section className="bg-white dark:bg-gray-900 ">
     <div className="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
-        <img className="w-full dark:hidden" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup.svg" alt="dashboard image" />
-        <img className="w-full hidden dark:block" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup-dark.svg" alt="dashboard image" />
+      
+        <img className="w-full block" src='images/websitedemo.png' alt="dashboard image" />
         <div className="mt-4 md:mt-0">
-            <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Let's create more tools and ideas that brings us together.</h2>
-            <p className="mb-6 font-light text-gray-500 md:text-lg dark:text-gray-400">Flowbite helps you connect with friends and communities of people who share your interests. Connecting with your friends and family as well as discovering new ones is easy with features like Groups.</p>
-            <a href="#" className="inline-flex items-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:ring-primary-900">
-                Get started
-                <svg className="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
-            </a>
+            <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+            Let us help you stay on top of your tasks.
+            </h2>
+            <p className="mb-6 font-light text-gray-500 md:text-lg dark:text-gray-400">
+            TaskHive helps you stay on top of your tasks and create multiple workspaces. When you have so many things to do for work, home, and to be able to enjoy you time off, let us help you accomplish these tasks and stay ahead of the game. 
+            </p>
+            
         </div>
     </div>
 </section>
 <div className="bg-white relative">
       <div className="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-16 px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:grid-cols-2 lg:px-8">
         <div>
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Technical Specifications</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Technical Features</h2>
           <p className="mt-4 text-gray-500">
-            The walnut wood card tray is precision milled to perfectly fit a stack of Focus cards. The powder coated
-            steel divider separates active cards from new ones, or can be used to archive important task lists.
+            TaskHive allows one to create new workspaces, tables, and tasks with ease. We have multiple features that allows for fast and reliable ways to track your progress.
           </p>
 
           <dl className="mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8">
@@ -98,22 +98,22 @@ export default function LandingPage(props){
         </div>
         <div className="grid grid-cols-2 grid-rows-2 gap-4 sm:gap-6 lg:gap-8">
           <img
-            src="https://tailwindui.com/img/ecommerce-images/product-feature-03-detail-01.jpg"
+            src='images/rightclick.png'
             alt="Walnut card tray with white powder coated steel divider and 3 punchout holes."
             className="rounded-lg bg-gray-100"
           />
           <img
-            src="https://tailwindui.com/img/ecommerce-images/product-feature-03-detail-02.jpg"
+            src="images/edit.png"
             alt="Top down view of walnut card tray with embedded magnets and card groove."
             className="rounded-lg bg-gray-100"
           />
           <img
-            src="https://tailwindui.com/img/ecommerce-images/product-feature-03-detail-03.jpg"
+            src="images/dragndrop.png"
             alt="Side of walnut card tray with card groove and recessed card area."
             className="rounded-lg bg-gray-100"
           />
           <img
-            src="https://tailwindui.com/img/ecommerce-images/product-feature-03-detail-04.jpg"
+            src="images/multipleworkspaces.png"
             alt="Walnut card tray filled with cards and card angled in dedicated groove."
             className="rounded-lg bg-gray-100"
           />
