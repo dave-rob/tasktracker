@@ -71,7 +71,7 @@ export default function Header(props) {
                           {workspace.name}
                           <span className="absolute inset-0" />
                        
-                        <p className="mt-1 text-gray-600 dark:text-gray-200">{workspace.owner_id}</p>
+                        {/* <p className="mt-1 text-gray-600 dark:text-gray-200">{workspace.owner_id}</p> */}
                       </div>
                     </button>
                   ))}</> : ''}
@@ -156,7 +156,7 @@ export default function Header(props) {
                         {props.authenticated ? props.workspaces.map((item) => (
                           <Disclosure.Button
                             key={item.id}
-                            
+                            onClick={() => props.selectWorkspace(item)}
                             className="block rounded-lg py-2 pl-8 w-full text-sm font-semibold leading-7 text-left text-gray-900 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-gray-700"
                           >
                             {item.name}
@@ -194,7 +194,7 @@ export default function Header(props) {
                 <a
                   href="#"
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-gray-700"
-                  // onClick={}
+                  onClick={() => {props.logOut(false)}}
                 >
                   Log out
                 </a>

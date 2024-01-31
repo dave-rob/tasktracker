@@ -18,7 +18,7 @@ CREATE TABLE users(
     id SERIAL PRIMARY KEY,
     f_name varchar(25) NOT NULL,
     l_name varchar(25) NOT NULL,
-    email varchar(100) NOT NULL,
+    email varchar(100) NOT NULL UNIQUE,
     password text NOT NULL
 );
 
@@ -31,13 +31,13 @@ CREATE TABLE workspaces(
 CREATE TABLE lists(
     id SERIAL PRIMARY KEY,
     description text NOT NULL,
-    done boolean,
     workspace_id INT REFERENCES workspaces(id) ON DELETE CASCADE
 );
 
 CREATE TABLE tasks (
   id SERIAL PRIMARY KEY,
   description TEXT NOT NULL,
+  done boolean,
   list_id INT REFERENCES lists(id) ON DELETE CASCADE
 );
 

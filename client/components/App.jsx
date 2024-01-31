@@ -11,7 +11,7 @@ const App = () => {
   const [width, setWidth] = useState(window.innerWidth)
   const [userLoggedIn, setUserLoggedIn] = useState(false)
   const [userId, setUserId] = useState('')
-  
+
 
   useEffect(()=>{
     window.addEventListener("resize", ()=> setWidth(window.innerWidth))
@@ -32,7 +32,7 @@ const App = () => {
   return (
     <main>
     <DndProvider backend={HTML5Backend}>
-    {userLoggedIn ? <UserPage authenticated={userLoggedIn} userId={userId} logOut = {userLogout} /> : <LandingPage userLogin={userLogin} width={width}/>}
+    {userLoggedIn ? <UserPage authenticated={userLoggedIn} userId={userId} logOut = {userLogout} /> : <LandingPage userLogin={userLogin} width={width} />}
 
     </DndProvider>
     {/* {logIn ? <Header /> :<Login login={userLogin}/>  } */}

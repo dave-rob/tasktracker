@@ -44,7 +44,6 @@ app.post('/api/login', async (req, res) => {
   if (rows.length ===0){
       throw new Error;
   }
-
   res.send(rows[0]);
   } catch(err){
       console.log("bad login")
@@ -52,6 +51,18 @@ app.post('/api/login', async (req, res) => {
       res.status(401).send("Incorrect Username and Password!")
   }
 })
+
+  app.post('/api/register', async (req,res)=>{
+    try{
+      const {fname, lname, email, password} = req.body;
+      const {rows} = await client.query("INSERT INTO users VALUES (Default, $1, $2,$3,crypt($4, gen_salt('bf')));", [fname, lname, email, password])
+      res.send("successful")
+    }
+    catch(err){
+      console.error(err);
+      res.status(401).send("User already exists.")
+    }
+  })
 
 app.post('/api/workspaces/:user_id', async (req, res) => {
   try{
@@ -95,8 +106,8 @@ app.post('/api/tasks/:list_id', async (req, res) => {
 app.patch('/api/tasks/:task_id', async (req, res) => {
   try{
     const {task_id} = req.params;
-    const {list_id} = req.body;
-    const {rows} = await client.query("UPDATE tasks SET list_id = $1 WHERE id = $2 returning *;", [list_id, task_id])
+    const {list_id, description, done} = req.body;
+    const {rows} = await client.query("UPDATE tasks SET list_id = COALESCE($1, list_id), description= COALESCE($2, description), done=COALESCE($3, done) WHERE id = $4 returning *;", [list_id, description, done, task_id])
     res.send(rows);
   }
   catch(err){
